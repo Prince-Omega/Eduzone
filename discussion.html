@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discussion Board - EduZone</title>
+    <link rel="stylesheet" href="style.css">
+        <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Discussion Board</h1>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="discussion.html">Discussion</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="discussion-container">
+                <h2>Ask a Question</h2>
+                <form id="discussionForm">
+                    <input type="text" id="question" placeholder="Type your question..." required>
+                    <button type="submit">Post</button>
+                </form>
+                <ul id="discussionList"></ul>
+            </div>
+        </section>
+    </main>
+    <script>
+       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyApFmAAh7nCmXHKncB2bYnMspLGBoF_Ovo",
+  authDomain: "eduzone-4e0ce.firebaseapp.com",
+  projectId: "eduzone-4e0ce",
+  storageBucket: "eduzone-4e0ce.firebasestorage.app",
+  messagingSenderId: "527569861172",
+  appId: "1:527569861172:web:26c08bb32d613dc7606861",
+  measurementId: "G-NVK7Y3LX7C"
+};
+        firebase.initializeApp(firebaseConfig);
+
+  // Make sure Firebase is initialized above this script
+  const db = firebase.firestore();
+
+  // Add a new message
+  document.getElementById('discussionForm').onsubmit = async function(e) {
+    e.preventDefault();
+    const question = document.getElementById('question').value;
+    await db.collection('discussions').add({
+      text: question,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    document.getElementById('discussionForm').reset();
+  };
+
+  // 4. Real-time listener for all messages
+        db.collection('discussions').orderBy('timestamp', 'desc')
+          .onSnapshot(snapshot => {
+            const list = document.getElementById('discussionList');
+            list.innerHTML = '';
+            snapshot.forEach(doc => {
+              const msg = doc.data();
+              const li = document.createElement('li');
+              li.textContent = msg.text;
+              list.appendChild(li);
+            });
+          });
+
+</script>
+</body>
+</html>

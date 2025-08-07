@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile - EduZone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>User Profile</h1>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="discussion.html">Discussion</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="profile-container">
+                <h2 id="userEmail">Loading...</h2>
+                <p>Enrolled Courses:</p>
+                <ul id="coursesList"></ul>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Show user email (if logged in)
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                document.getElementById('userEmail').textContent = user.email;
+                // Example: List of courses (static for now)
+                document.getElementById('coursesList').innerHTML = `
+                    <li>HTML & CSS Basics</li>
+                    <li>JavaScript Essentials</li>
+                `;
+            } else {
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+</body>
+</html>

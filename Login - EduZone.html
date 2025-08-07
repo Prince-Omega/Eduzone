@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)file:///C:/Users/Ace%20Karma/Desktop/intern/login.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EduZone</title>
+    <link rel="stylesheet" href="./Login - EduZone_files/style.css">
+</head>
+<body>
+    <header>
+        <h1>Login to EduZone</h1>
+        <nav>
+            <a href="file:///C:/Users/Ace%20Karma/Desktop/intern/index.html">Home</a>
+            <a href="file:///C:/Users/Ace%20Karma/Desktop/intern/login.html">Login</a>
+            <a href="file:///C:/Users/Ace%20Karma/Desktop/intern/dashboard.html">Dashboard</a>
+            <a href="file:///C:/Users/Ace%20Karma/Desktop/intern/resister.html">Register</a>
+                </nav>
+    </header>
+    <main>
+        <section>
+            <div class="login-container">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required="">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required="">
+                    <div class="show-password">
+                        <input type="checkbox" id="showPass">
+                        <label for="showPass" style="margin:0;">Show Password</label>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <a class="register-link" href="file:///C:/Users/Ace%20Karma/Desktop/intern/register.html">Don't have an account? Register</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 EduZone. All rights reserved.</p>
+    </footer>
+    <script>
+        // Show/hide password functionality
+        document.getElementById('showPass').addEventListener('change', function() {
+            const pwd = document.getElementById('password');
+            pwd.type = this.checked ? 'text' : 'password';
+            });
+
+        // Example: Prevent default form submission and show a message (for demo)
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Login functionality coming soon!');
+        });
+    </script>
+
+</body></html>

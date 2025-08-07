@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EduZone</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet"> <!-- Added Google Fonts -->
+      <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Login to EduZone</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="register.html">Register</a>
+                </nav>
+    </header>
+    <main>
+        <section>
+            <div class="login-container">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="show-password">
+                        <input type="checkbox" id="showPass">
+                        <label for="showPass" style="margin:0;">Show Password</label>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <a class="register-link" href="register.html">Don't have an account? Register</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 EduZone. All rights reserved.</p>
+    </footer>
+    <script>
+  // Replace with your Firebase config
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    // ...etc
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Redirect or show dashboard
+        window.location.href = "dashboard.html";
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  });
+</script>
+<script>
+     // Show/hide password functionality
+        document.getElementById('showPass').addEventListener('change', function() {
+            const pwd = document.getElementById('password');
+            pwd.type = this.checked ? 'text' : 'password';
+        });
+
+        // Example: Prevent default form submission and show a message (for demo)
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Login functionality coming soon!');
+        });
+</script>
+</body>
+</html>

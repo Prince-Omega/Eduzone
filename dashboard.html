@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EduZone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Dashboard - EduZone</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="discussion.html">Discussion</a>
+        </nav>
+    </header>
+    <main>
+   <div class="dashboard-container">
+            <h2>Welcome to your Dashboard</h2>
+            <p>Here you can manage your courses and track your progress.</p>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>My Courses</h3>
+                    <p>View and continue your enrolled courses.</p>
+                    <button onclick="alert('Courses feature coming soon!')">View Courses</button>
+                </div>
+                <div class="dashboard-card">
+                    <!-- Add inside your dashboard-card for Progress -->
+<div class="dashboard-card">
+    <h3>Progress</h3>
+    <p>Overall Progress</p>
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <button onclick="updateProgress()">Update Progress</button>
+</div>
+<div class="dashboard-card">
+        <h3>Community</h3>
+        <p>Join discussions and connect with other learners.</p>
+        <button onclick="alert('Community feature coming soon!')">Go to Community</button>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+        <script>
+    // Demo: Animate progress bar to a random value
+    function updateProgress() {
+        const bar = document.getElementById('progressBar');
+        const percent = Math.floor(Math.random() * 100) + 1;
+        bar.style.width = percent + '%';
+    }
+</script>
+    </main>
+    <footer>
+        <p>&copy; 2025 EduZone. All rights reserved.</p>
+    </footer>
+</body>     
+</html>

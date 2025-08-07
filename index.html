@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduZone</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js">
+        const db = firebase.firestore();
+    </script>
+    <style>
+        </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to EduZone</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>About EduZone</h2>
+            <p>EduZone is your ultimate educational platform. Access resources, track your progress, and connect with a vibrant learning community.</p>
+            <button class="cta-btn" onclick="window.location.href='login.html'">Get Started</button>
+        </section>
+        <section class="features">
+            <div class="feature-card">
+                <h3>Interactive Courses</h3>
+                <p>Engage with hands-on lessons and quizzes to boost your learning experience.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Progress Tracking</h3>
+                <p>Monitor your achievements and set goals to stay motivated on your journey.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Community Support</h3>
+                <p>Join discussions, ask questions, and collaborate with fellow learners.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 EduZone. All rights reserved.</p>
+    </footer>
+</body>
+</html>
